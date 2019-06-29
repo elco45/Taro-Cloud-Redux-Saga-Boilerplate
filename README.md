@@ -20,6 +20,12 @@ $ npm install
 - Create a `.env` file just like the example in `.env-example` and put the required data.
 - To get the **Cloud ID** go inside WeChat IDE, click on `Cloud Base` and then follow the necessary steps.
 
+# Quickstart
+Import this project in the Wechat IDE and run the following command in your console/bash to start the WeChat mini program in development.
+```sh
+$ npm run dev:weapp
+```
+
 License
 ----
 MIT
