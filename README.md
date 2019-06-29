@@ -1,26 +1,26 @@
 # Taro-Cloud-Redux-Saga-Boilerplate
 This boilerplate is used to create a simple WeChat cloud based mini program using TaroJs with Redux and Saga.
 
-# Installation
+## Installation
 This boilerplate requires newer node environment (>=8.0.0).
 ```sh
 $ cd taro-cloud-redux-saga-boilerplate
 $ npm install
 ```
 
-### Tech
+## Tech
 * [TaroJS] - [ReactJS] syntax specification tool to build different solutions like WeChat applet, Baidu applet, etc.
 * [Redux Saga] - Makes side effects (i.e. data fetching) easier to manage and execute.
 * [WX Server SDK] - SDK that helps with the Cloud Base calls.
 
-# Setup
+## Setup
 - [Get appId] and change **appId** in `project.config.json`.
 - Open project in WeChat IDE, go to `Details > Local Settings` and disable **"Transpile ES6 to ES5"**.
 - Inside WeChat IDE, open the folder `cloudfunctions > login` and right click to select **"Create & Deploy: Install dependencies in the Cloud"**.
 - Create a `.env` file just like the example in `.env-example` and put the required data.
 - To get the **Cloud ID** go inside WeChat IDE, click on `Cloud Base` and then follow the necessary steps.
 
-# Quickstart
+## Quickstart
 Import this project in the Wechat IDE and run the following command in your console/bash to start the WeChat mini program in development.
 ```sh
 $ npm run dev:weapp
