@@ -4,7 +4,7 @@ const cloud = require('wx-server-sdk');
 cloud.init();
 
 // 云函数入口函数
-exports.main = async (event, context) => {
+exports.main = async event => {
   console.log(event);
   switch (event.action) {
     case 'sendTemplateMessage': {
@@ -17,7 +17,7 @@ exports.main = async (event, context) => {
       return getOpenData(event);
     }
     default: {
-      return;
+      return '';
     }
   }
 };
@@ -32,7 +32,7 @@ async function sendTemplateMessage(event) {
     keywordIdList: [3, 4, 5],
   });
 
-  const templateId = addResult.templateId;
+  const { templateId } = addResult;
 
   const sendResult = await cloud.openapi.templateMessage.send({
     touser: OPENID,
@@ -59,14 +59,14 @@ async function sendTemplateMessage(event) {
   return sendResult;
 }
 
-async function getWXACode(event) {
+async function getWXACode() {
   // 此处将获取永久有效的小程序码，并将其保存在云文件存储中，最后返回云文件 ID 给前端使用
 
   const wxacodeResult = await cloud.openapi.wxacode.get({
     path: 'pages/openapi/openapi',
   });
 
-  const fileExtensionMatches = wxacodeResult.contentType.match(/\/([^\/]+)/);
+  const fileExtensionMatches = wxacodeResult.contentType.match(/\/([^/]+)/);
   const fileExtension =
     (fileExtensionMatches && fileExtensionMatches[1]) || 'jpg';
 
