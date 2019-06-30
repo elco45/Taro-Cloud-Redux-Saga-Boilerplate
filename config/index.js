@@ -1,6 +1,6 @@
+const dotenv = require('dotenv');
 const dev = require('./dev');
 const prod = require('./prod');
-const dotenv = require('dotenv');
 dotenv.config();
 
 const config = {
@@ -12,7 +12,7 @@ const config = {
     '750': 1,
     '828': 1.81 / 2,
   },
-  sourceRoot: 'miniprogram/src',
+  sourceRoot: 'miniprogram',
   outputRoot: 'dist',
   plugins: {
     babel: {
