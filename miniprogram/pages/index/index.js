@@ -1,40 +1,64 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { View, Button } from '@tarojs/components';
+import { View, Button, Image, Text } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { bindActionCreators } from 'redux';
-import { loginRequest } from '../../redux/actions/user';
+import { getWxContextRequest } from '../../redux/actions/user';
 
 import './index.scss';
 
 class Index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userProfile: null,
+    };
+  }
+
   config = {
     navigationBarTitleText: 'Boilerplate',
   };
 
-  login() {
-    this.props.login();
+  getWxContext() {
+    this.props.getWxContext();
   }
 
-  renderUser() {
-    const { error, user } = this.props;
-    if (!error && !user) {
+  renderOpenId() {
+    const { error, wxContext } = this.props;
+    if (!error && !wxContext) {
       return <View />;
     }
-    return user ? <View>{user.openid}</View> : <View>Error</View>;
+    return wxContext ? <View>{wxContext.openid}</View> : <View>Error</View>;
+  }
+
+  getUserInfo(userInfo) {
+    const { detail } = userInfo;
+    if (detail.errMsg === 'getUserInfo:ok') {
+      this.setState({
+        userProfile: detail.userInfo,
+      });
+    }
   }
 
   render() {
     const { loading } = this.props;
+    const { userProfile } = this.state;
     return (
       <View>
-        <View>
-          <View>Boilerplate</View>
-          <Button loading={loading} onClick={() => this.login()}>
-            Login
-          </Button>
-          {this.renderUser()}
-        </View>
+        <View>Boilerplate</View>
+        <Button openType="getUserInfo" onGetUserInfo={this.getUserInfo}>
+          Get User Profile
+        </Button>
+        <Button loading={loading} onClick={() => this.getWxContext()}>
+          Get OpenID
+        </Button>
+        {userProfile && (
+          <View>
+            <Text>{userProfile.nickName}</Text>
+            <Image src={userProfile.avatarUrl} />
+          </View>
+        )}
+        {this.renderOpenId()}
       </View>
     );
   }
@@ -43,21 +67,21 @@ class Index extends Component {
 Index.propTypes = {
   error: PropTypes.object,
   loading: PropTypes.bool,
-  login: PropTypes.func,
-  user: PropTypes.object,
+  getWxContext: PropTypes.func,
+  wxContext: PropTypes.object,
 };
 
 const mapStateToProps = state => {
-  const { user, loading, error } = state.userReducer;
+  const { wxContext, loading, error } = state.userReducer;
   return {
-    user,
+    wxContext,
     loading,
     error,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  login: bindActionCreators(loginRequest, dispatch),
+  getWxContext: bindActionCreators(getWxContextRequest, dispatch),
 });
 
 export default connect(
