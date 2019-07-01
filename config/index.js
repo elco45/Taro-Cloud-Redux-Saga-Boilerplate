@@ -38,9 +38,7 @@ const config = {
   defineConstants: {},
   copy: {
     patterns: [],
-    options: {
-      node: { fs: 'empty' },
-    },
+    options: {},
   },
   weapp: {
     module: {
