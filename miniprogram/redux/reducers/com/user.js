@@ -1,13 +1,13 @@
 import produce from 'immer';
 import {
-  LOGIN_REQUEST,
-  LOGIN_REQUEST_SUCCESS,
-  LOGIN_REQUEST_ERROR,
+  GET_WXCONTEXT_REQUEST,
+  GET_WXCONTEXT_REQUEST_SUCCESS,
+  GET_WXCONTEXT_REQUEST_ERROR,
 } from '../../constants/user';
 
 export const initialState = {
   loading: false,
-  user: null,
+  wxContext: null,
   error: null,
 };
 
@@ -15,19 +15,19 @@ export const initialState = {
 const userReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case LOGIN_REQUEST:
+      case GET_WXCONTEXT_REQUEST:
         draft.loading = true;
-        draft.user = null;
+        draft.wxContext = null;
         draft.error = null;
         break;
 
-      case LOGIN_REQUEST_ERROR:
+      case GET_WXCONTEXT_REQUEST_ERROR:
         draft.error = action.data;
         draft.loading = false;
         break;
 
-      case LOGIN_REQUEST_SUCCESS:
-        draft.user = action.data;
+      case GET_WXCONTEXT_REQUEST_SUCCESS:
+        draft.wxContext = action.data;
         draft.loading = false;
         break;
     }
