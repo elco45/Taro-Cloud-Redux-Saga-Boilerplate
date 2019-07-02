@@ -62,6 +62,7 @@ module.exports = {
     'newline-per-chained-call': 0,
     'no-confusing-arrow': 0,
     'no-console': 1,
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
     'no-unused-vars': ['error', { varsIgnorePattern: 'Taro' }],
     'no-use-before-define': 0,
     'prefer-template': 2,
