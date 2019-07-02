@@ -1,6 +1,6 @@
 import Taro, { Component } from '@tarojs/taro';
 import PropTypes from 'prop-types';
-import { View, Button, Image, Text } from '@tarojs/components';
+import { View, Button, Image, Text, Navigator } from '@tarojs/components';
 import { connect } from '@tarojs/redux';
 import { bindActionCreators } from 'redux';
 import { getWxContextRequest } from '../../redux/actions/user';
@@ -18,10 +18,6 @@ class Index extends Component {
   config = {
     navigationBarTitleText: 'Boilerplate',
   };
-
-  getWxContext() {
-    this.props.getWxContext();
-  }
 
   renderOpenId() {
     const { error, wxContext } = this.props;
@@ -41,15 +37,18 @@ class Index extends Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, getWxContext } = this.props;
     const { userProfile } = this.state;
     return (
       <View>
         <View>Boilerplate</View>
+        <Navigator url="/pages/todo/index">
+          <Button>Go to TODOS</Button>
+        </Navigator>
         <Button openType="getUserInfo" onGetUserInfo={this.getUserInfo}>
           Get User Profile
         </Button>
-        <Button loading={loading} onClick={() => this.getWxContext()}>
+        <Button loading={loading} onClick={() => getWxContext()}>
           Get OpenID
         </Button>
         {userProfile && (
