@@ -8,15 +8,21 @@ $ cd taro-cloud-redux-saga-boilerplate
 $ npm install
 ```
 
-## Tech
+## Tech Stack
+### Core
 * [TaroJS] - [ReactJS] syntax specification tool to build different solutions like WeChat applet, Baidu applet, etc.
+* [Redux] - State container for javascript apps.
 * [Redux Saga] - Makes side effects (i.e. data fetching) easier to manage and execute.
+* [Immer] - Assists with the immutable state modification.
 * [WX Server SDK] - SDK that helps with the Cloud Base calls.
+### Linting
+* [ESlint]
+* [Prettier]
 
 ## Setup
 - [Get appId] and change **appId** in `project.config.json`.
 - Open project in WeChat IDE, go to `Details > Local Settings` and disable **"Transpile ES6 to ES5"**.
-- Inside WeChat IDE, open the folder `cloudfunctions > login` and right click to select **"Create & Deploy: Install dependencies in the Cloud"**.
+- Inside WeChat IDE, select the folders `cloudfunctions > wxContext` and `cloudfunctions > dbTodos`, then right click to select **"Create & Deploy: Install dependencies in the Cloud"**.
 - Create a `.env` file just like the example in `.env-example` and put the required data.
 - To get the **Cloud ID** go inside WeChat IDE, click on `Cloud Base` and then follow the necessary steps.
 
@@ -30,10 +36,14 @@ License
 ----
 MIT
 
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+[//]: # (These are reference links used in the body)
 
+[ESlint]: <https://eslint.org/>
 [Get appId]: <https://open.wechat.com/cgi-bin/newreadtemplate?t=overseas_open/docs/mini-programs/development/brief-tutorial>
+[Immer]: <https://github.com/immerjs/immer>
+[Prettier]: <https://prettier.io/>
 [ReactJS]: <https://reactjs.org/>
-[TaroJS]: <https://github.com/NervJS/taro>
-[Redux Saga]: <https://github.com/redux-saga/redux-saga>
+[Redux]: <https://redux.js.org/>
+[Redux Saga]: <https://redux-saga.js.org/>
+[TaroJS]: <https://nervjs.github.io/taro/docs/GETTING-STARTED.html>
 [WX Server SDK]: <https://developers.weixin.qq.com/miniprogram/en/dev/wxcloud/reference-server-api/>

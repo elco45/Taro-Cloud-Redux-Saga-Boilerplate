@@ -12,7 +12,7 @@ store.runSaga(rootSaga);
 
 class App extends Component {
   config = {
-    pages: ['pages/index/index'],
+    pages: ['pages/index/index', 'pages/todo/index'],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',

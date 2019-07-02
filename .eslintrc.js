@@ -33,7 +33,7 @@ module.exports = {
     'import/no-dynamic-require': 0,
     'import/no-extraneous-dependencies': 0,
     'import/no-named-as-default': 0,
-    'import/no-unresolved': 2,
+    'import/no-unresolved': [2, { ignore: ['cloudfunctions/*'] }],
     'import/no-webpack-loader-syntax': 0,
     'import/prefer-default-export': 0,
     indent: [
@@ -62,6 +62,7 @@ module.exports = {
     'newline-per-chained-call': 0,
     'no-confusing-arrow': 0,
     'no-console': 1,
+    'no-underscore-dangle': ['error', { allow: ['_id'] }],
     'no-unused-vars': ['error', { varsIgnorePattern: 'Taro' }],
     'no-use-before-define': 0,
     'prefer-template': 2,
