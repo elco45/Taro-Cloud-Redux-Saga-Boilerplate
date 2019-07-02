@@ -4,7 +4,7 @@ import {
   GET_WXCONTEXT_REQUEST_ERROR,
 } from '../../constants/user';
 
-export function* wxContext() {
+export function* wxContextSaga() {
   try {
     const apiCall = () =>
       new Promise((resolve, reject) => {
@@ -16,11 +16,7 @@ export function* wxContext() {
         });
       });
     const response = yield call(apiCall);
-    if (response && response.errMsg === 'cloud.callFunction:ok') {
-      yield put({ type: GET_WXCONTEXT_REQUEST_SUCCESS, data: response.result });
-    } else {
-      yield put({ type: GET_WXCONTEXT_REQUEST_ERROR, data: response });
-    }
+    yield put({ type: GET_WXCONTEXT_REQUEST_SUCCESS, data: response.result });
   } catch (error) {
     yield put({ type: GET_WXCONTEXT_REQUEST_ERROR, data: error });
   }
